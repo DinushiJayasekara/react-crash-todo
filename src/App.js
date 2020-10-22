@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
@@ -14,20 +15,17 @@ class App extends Component {
     todos: [
       {
         id: uuid(),
-        title: 'Take out the trash',
-        completed: false
-      },
-      {
-        id: uuid(),
         title: 'Make dinner',
-        completed: true
-      },
-      {
-        id: uuid(),
-        title: 'Attend meeting',
         completed: false
       },
     ]
+  }
+
+  componentDidMount() {
+    Axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5')
+      .then(res => this.setState({
+        todos: res.data
+      }))
   }
 
   // Toggle Complete
