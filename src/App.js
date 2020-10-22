@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 
-import Header from './components/layouts/Header'
-import AddTodo from './components/todos/AddTodo'
-import Todos from './components/todos/Todos'
+import Header from './components/layouts/Header';
+import About from './components/pages/About';
+import AddTodo from './components/todos/AddTodo';
+import Todos from './components/todos/Todos';
 
 import './App.css';
 
@@ -62,20 +64,30 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Router>
+        <div className="App">
 
-        <div className="container">
-          {/* Add Header */}
-          <Header></Header>
+          <div className="container">
+            {/* Add Header */}
+            <Header></Header>
 
-          {/* Insert Todo Item */}
-          <AddTodo addTodo={this.addTodo}></AddTodo>
-          <br></br>
+            {/* Create Route */}
+            <Route exact path="/" render={props => (
+              <React.Fragment>
+                {/* Insert Todo Item */}
+                <AddTodo addTodo={this.addTodo}></AddTodo>
+                <br></br>
 
-          <Todos todos={this.state.todos} toggleComplete={this.toggleComplete} removeItem={this.removeItem}></Todos>
+                <Todos todos={this.state.todos} toggleComplete={this.toggleComplete} removeItem={this.removeItem}></Todos>
+              </React.Fragment>
+            )}></Route>
+
+            <Route path="/about" component={About}></Route>
+
+          </div>
+
         </div>
-
-      </div>
+      </Router >
     );
   }
 }
