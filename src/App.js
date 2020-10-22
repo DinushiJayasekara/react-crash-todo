@@ -1,12 +1,11 @@
-import Axios from 'axios';
-import React, { Component } from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
-
 import Header from './components/layouts/Header';
 import About from './components/pages/About';
 import AddTodo from './components/todos/AddTodo';
 import Todos from './components/todos/Todos';
+import Axios from 'axios';
+import React, { Component } from 'react';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
 
 import './App.css';
 

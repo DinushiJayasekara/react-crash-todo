@@ -13,7 +13,7 @@ export class TodoItem extends Component {
 
     render() {
 
-        const { id, title} = this.props.todo;
+        const { id, title } = this.props.todo;
 
         return (
             <div style={this.getStyle()}>
@@ -30,7 +30,9 @@ export class TodoItem extends Component {
 
 // PropTypes
 TodoItem.propTypes = {
-    todo: PropTypes.object.isRequired
+    todo: PropTypes.object.isRequired,
+    toggleComplete: PropTypes.func.isRequired,
+    removeItem: PropTypes.func.isRequired,
 }
 
 const btnStyle = {
